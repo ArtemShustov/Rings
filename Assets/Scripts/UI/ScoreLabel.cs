@@ -10,6 +10,9 @@ namespace Game.UI {
 		private void UpdateUI(int score) {
 			_label.text = string.Format(_pattern, score);
 		}
+		public void Restore() {
+			UpdateUI(0);
+		}
 
 		private void OnEnable() {
 			_counter.ScoreUpdated += UpdateUI;

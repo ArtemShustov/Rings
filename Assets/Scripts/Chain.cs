@@ -9,6 +9,7 @@ public class Chain: MonoBehaviour {
 	[SerializeField] private RingBuilder _builder;
 
 	private Ring _current;
+	private int _length;
 
 	public event Action Breaked;
 	public event Action RingPlaced;
@@ -21,6 +22,7 @@ public class Chain: MonoBehaviour {
 	public void Next() {
 		if (_current.IsSelectorInArea()) {
 			_current.Place();
+			_length++;
 			RingPlaced?.Invoke();
 			AddRing();
 		} else {
@@ -44,4 +46,10 @@ public class Chain: MonoBehaviour {
 		}
 		# endregion LocalMethods
 	}
+	public void Restore() {
+		for (int index = 0; index < _root.childCount; index++) {
+			Destroy(_root.GetChild(index));
+		}
+	}
+	public int GetLength() => _length;
 }

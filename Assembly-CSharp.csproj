@@ -64,6 +64,11 @@
     <Compile Include="Assets\Scripts\Stats\ScoreCounter.cs" />
     <Compile Include="Assets\Scripts\Stats\ScoreSaver.cs" />
     <Compile Include="Assets\Scripts\Ring\RingAnimations.cs" />
+    <Compile Include="Assets\Scripts\UI\PanelSystem\Panel.cs" />
+    <Compile Include="Assets\Scripts\UI\PanelSystem\PanelSwitcher.cs" />
+    <Compile Include="Assets\Scripts\UI\PanelSystem\Variants\GamePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\PanelSystem\Variants\LosePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\PanelSystem\Variants\StartPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
