@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class Ring: MonoBehaviour {
 	[Range(-1, 1)]
@@ -9,12 +8,16 @@ public class Ring: MonoBehaviour {
 	[SerializeField] private float _areaFill = 0.2f;
 	[Space]
 	[SerializeField] private Image _area;
+	[SerializeField] private RingAnimations _animations;
+
+	public RingAnimations Animations => _animations;
 
 	public void Init(float rotation, float areaFill) {
 		_rotation = rotation;
 		_areaFill = areaFill;
 		_area.fillAmount = _areaFill;
 		transform.localEulerAngles = Vector3.forward * Random.Range(0, 360);
+		_animations.Pop();
 	}
 
 	private void Update() {
@@ -29,14 +32,11 @@ public class Ring: MonoBehaviour {
 		return ringAngle >= 0 && ringAngle <= areaEndAngle;
 	}
 	public void Break() {
-		_area.DOColor(Color.red, 1);
-		_area.DOFillAmount(1, 1 * (1 - _area.fillAmount));
+		_animations.Break();
 		_rotation = 0;
 	}
 	public void Place() {
-		_area.DOColor(Color.green, 1);
-		_area.DOFillAmount(1,  (1 - _area.fillAmount));
-		transform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 0);
+		_animations.Place();
 		_rotation = 0;
 	}
 	

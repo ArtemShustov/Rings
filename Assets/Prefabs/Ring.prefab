@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 386226361186733699}
   - component: {fileID: 386226361186733696}
+  - component: {fileID: 7772187961186813140}
   - component: {fileID: 386226361186733726}
   - component: {fileID: 386226361186733697}
   m_Layer: 5
@@ -128,7 +129,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotation: 0.5
   _areaFill: 0.2
-  _rectTransform: {fileID: 386226361186733699}
+  _area: {fileID: 386226360805903218}
+  _animations: {fileID: 7772187961186813140}
+--- !u!114 &7772187961186813140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386226361186733698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87de5a964ac46341b71ea7b78c6f182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _popDuration: 0.5
+  _popScale: 0.3
   _area: {fileID: 386226360805903218}
 --- !u!222 &386226361186733726
 CanvasRenderer:
