@@ -8,24 +8,23 @@ public class Ring: MonoBehaviour {
 	[Range(0, 1)]
 	[SerializeField] private float _areaFill = 0.2f;
 	[Space]
-	[SerializeField] private RectTransform _rectTransform;
 	[SerializeField] private Image _area;
 
 	public void Init(float rotation, float areaFill) {
 		_rotation = rotation;
 		_areaFill = areaFill;
 		_area.fillAmount = _areaFill;
-		_rectTransform.localEulerAngles = Vector3.forward * Random.Range(0, 360);
+		transform.localEulerAngles = Vector3.forward * Random.Range(0, 360);
 	}
 
 	private void Update() {
-		var angles = _rectTransform.localEulerAngles;
+		var angles = transform.localEulerAngles;
 		angles.z += 360 * _rotation * Time.deltaTime;
-		_rectTransform.localEulerAngles = angles;
+		transform.localEulerAngles = angles;
 	}
 
-	public bool IsPointerInArea() {
-		float ringAngle = _rectTransform.localEulerAngles.z;
+	public bool IsSelectorInArea() {
+		float ringAngle = transform.localEulerAngles.z;
 		float areaEndAngle = 360 * _areaFill;
 		return ringAngle >= 0 && ringAngle <= areaEndAngle;
 	}
@@ -37,6 +36,7 @@ public class Ring: MonoBehaviour {
 	public void Place() {
 		_area.DOColor(Color.green, 1);
 		_area.DOFillAmount(1,  (1 - _area.fillAmount));
+		transform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 0);
 		_rotation = 0;
 	}
 	

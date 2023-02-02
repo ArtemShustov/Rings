@@ -18,8 +18,8 @@ public class Chain: MonoBehaviour {
 		AddRing(silent: true);
 	}
 
-	public void Use() {
-		if (_current.IsPointerInArea()) {
+	public void Next() {
+		if (_current.IsSelectorInArea()) {
 			_current.Place();
 			RingPlaced?.Invoke();
 			AddRing();
@@ -39,10 +39,8 @@ public class Chain: MonoBehaviour {
 
 		#region LocalMethods
 		void SlideAnimate() {
-			var position = transform.localPosition;
-			position.y += _ringHeight;
-			transform.localPosition = position;
-			transform.DOLocalMoveY(transform.localPosition.y - _ringHeight, _slideDownTime);
+			transform.DOLocalMoveY(transform.localPosition.y, _slideDownTime)
+				.From(transform.localPosition.y + _ringHeight);
 		}
 		# endregion LocalMethods
 	}

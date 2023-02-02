@@ -10,7 +10,7 @@ public class RingBuilder {
 
 	public Ring InstantiateRandom(Transform root) {
 		var rotation = GetRandomFromCurve(_rotation, -1, 1);
-		var fill = GetRandomFromCurve(_fillAmount, -1, 1);
+		var fill = GetRandomFromCurve(_fillAmount, 0, 1);
 		var ring = GameObject.Instantiate(_prefab, root);
 		ring.Init(rotation, fill);
 		return ring;
